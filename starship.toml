@@ -1,0 +1,71 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+format = """
+[────────────────────────](bold green)
+$all
+"""
+
+# makes prompt a single line
+[line_break]
+disabled = false
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[cmd_duration]
+min_time = 1_000  # Show command duration over 1,000 milliseconds (= 1 sec)
+format = "[took $duration]($style)"
+show_milliseconds = true
+
+[directory]
+format = "[$path ]($style)"
+style = "cyan"
+truncate_to_repo = false
+truncation_symbol = "…/"
+home_symbol = " "
+
+[character]
+success_symbol = "[ ](bold green)"
+error_symbol = "[ ](bold red)"
+
+# These symbols will only show when battery levels are 20% or less
+[battery]
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+
+[[battery.display]]  # "bold red" style when capacity is between 0% and 25%
+threshold = 25
+style = "bold red"
+
+# Clear visibility for exit codes
+[status]
+style = "bg:red"
+format = '[\[$status\]]($style) '
+disabled = false
+
+# Rust
+[rust]
+symbol = " "
+
+# Displays current Git branch when in a directory of a Git repository.
+[git_branch]
+format = "on [$symbol](green)[$branch]($style) ([ ](#FF8C00) $remote_name/$remote_branch)"
+style = "bold purple"
+symbol = " "
+always_show_remote = true
+
+# Displays status of Git repository when in a directory of a Git repository.
+[git_status]
+format = "[ $all_status $ahead_behind ]($style)"
+ahead = "ﲗ $count "
+behind = "ﲔ $count "
+deleted = "﫧 $count "
+diverged = " $count "
+stashed = " $count "
+modified = " $count (#FF8C00)"
+staged = '[ $count ](green)'
+renamed = " $count "
+untracked = " $count "
+style = "red"
